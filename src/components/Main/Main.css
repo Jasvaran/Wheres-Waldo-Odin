@@ -1,0 +1,17 @@
+.main {
+    height: 100%;
+    width: 100%;
+    background-color: #86A3B8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.waldo-container{
+    height: 700px;
+    width: 700px;
+}
+.waldo {
+    height: 600px;
+    width: 600px;
+  
+}

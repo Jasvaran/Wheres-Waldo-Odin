@@ -1,0 +1,27 @@
+.register {
+    background-color: lightgrey;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../assets/login.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+form {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 350px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+#register {
+    background-color: #1E90FF
+}

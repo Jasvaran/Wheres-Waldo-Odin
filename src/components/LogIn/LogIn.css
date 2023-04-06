@@ -1,0 +1,51 @@
+.logIn {
+    background-color: lightgrey;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../assets/login.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+form {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 350px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+input {
+    width: 200px;
+    align-self: center;
+}
+
+button {
+    width: 150px;
+    height: 25px;
+    align-self: center;
+    border-radius: 4px;
+    border-style: none;
+    cursor: pointer;
+}
+
+#sign-in {
+    background-color: #1E90FF;
+    color: white;
+}
+
+#google-sign-in {
+    background-color: #3CB371;
+}
+
+#sign-out {
+    background-color: #DC143C;
+    color: black;
+}
