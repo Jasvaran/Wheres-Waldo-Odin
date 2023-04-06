@@ -7,8 +7,13 @@ export default function useMousePosition(){
 
     useEffect(() => {
         const handleMouseClick = (event) => {
-            if (event.target.id === 'waldo'){
+            if (event.target.id === 'waldo-img'){
                 setMousePosition({x: event.clientX, y: event.clientY})
+            }
+
+            if (event.target.id === 'hitbox'){
+                setMousePosition({x: event.clientX, y: event.clientY})
+
             }
         }
 
