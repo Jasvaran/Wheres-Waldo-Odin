@@ -15,3 +15,15 @@
     width: 600px;
   
 }
+
+#hitbox {
+    font-size: 27px;
+    position: absolute;
+    border: 1px solid black;
+    left: 1003px;
+    top: 650px;
+
+    margin-bottom:0px;
+    /* color: green;
+    background-color: black; */
+}
