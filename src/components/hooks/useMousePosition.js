@@ -1,6 +1,9 @@
+import { doc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 
 export default function useMousePosition(){
+
+
 
     const [mousePosition, setMousePosition] = useState({x: null, y: null})
 
@@ -16,7 +19,6 @@ export default function useMousePosition(){
 
             }
         }
-
         window.addEventListener('click', handleMouseClick);
 
         return () => {

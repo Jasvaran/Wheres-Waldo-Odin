@@ -5,49 +5,52 @@ import { useNavigate } from "react-router-dom";
 import Nav from "../Nav/Nav";
 import { getAuth } from "firebase/auth";
 import img1 from '../../assets/wheres-waldo.jpeg'
-import useMousePosition from "../hooks/useMousePosition";
+// import useMousePosition from "../hooks/useMousePosition";
 import DropDownMenu from "../dopDownMenu/DropDownMenu";
 import { getFirestore, doc, getDoc, collection, setDoc } from 'firebase/firestore'
 
+
 export default function Main(props) {
 
-
-    const [authData, setAuthData] = useState({})
-    const [coords, setCoords] = useState({x: null, y: null});
-    const [hide, setHide] = useState(null)
-    const [region, setRegion] = useState(null)
-    const [selection, setSelection] = useState(null)
-
-    const mousePos = useMousePosition();
-
     let navigate = useNavigate();
+
+    const [authData, setAuthData] = useState({});
+    const [coords, setCoords] = useState({x: null, y: null});
+    const [selection, setSelection] = useState("");
+    const [hide, setHide] = useState(false);
+    const [lastRegionSelected, setlastRegionSelected] = useState();
+
+
+
+
 
     async function validateSelection(){
 
         try {
+
             const db = getFirestore();
             const charRef = doc(db, 'characters', 'odin')
             // await setDoc(doc(charRef, 'two'), {'two': 'michael'})
             const charSnap = await getDoc(charRef)
             let data = charSnap.data()
             console.log(data)
-            if (region === 'hitbox' && selection === data.one){
+            if (lastRegionSelected === 'hitbox' && selection === data.one){
                 alert('correct')
             } else {
                 alert('incorrect')
-            }
-
-        } catch {
-            console.log('undefined')
+            }       
+        } catch(error){
+            console.log(error)
         }
 
 
-        }
+    }
         
     
 
 
 
+    
     
 
     useEffect(() => {
@@ -62,43 +65,54 @@ export default function Main(props) {
         }
     }, [])
 
-    useEffect(() => {
-        triggerMenu()
-    }, [mousePos])
+
+
    
-    function triggerMenu(e){
-        setHide('visible')
-        setCoords({x: mousePos.x, y: mousePos.y})
-        
 
-    }
 
     useEffect(() => {
-        validateSelection()
+        if (lastRegionSelected){
+            validateSelection();
+
+        }
     }, [selection])
 
-    async function hideCallback(selection){
-        setHide('hidden')
+    
+    async function chooseCharacterCallback(selection){
+        // recieves id from clicking on a name and sets selection var to that id.
         setSelection(selection)
+
         
         console.log('sel', selection)
-        console.log('region', region)
     }
 
-    function checkRegion(e){
-        setRegion(e.target.id)
+    function showMenu(e){
+        console.log(e.target.id)
+        // triggers menu to be shown or hidden
+        if (e.target.id === 'waldo-img' || e.target.id === 'hitbox' ){
+            setHide(true)
+            setlastRegionSelected(e.target.id)
+        }
+        if (e.target.id === 'main'){
+            setHide(false)
+            setlastRegionSelected(e.target.id)
+        }
+        
 
     }
+
+
+
     return (
-        <div className="main">
+        <div className="main" id="main" onClick={showMenu} >
             <Nav signOut={props.signOut} name={props.name} />
             <h1 className="title">Wheres Waldo</h1>
-            <div className="waldo-container" onClick={checkRegion}>
+            <div className="waldo-container" id="waldo-container">
                 <img className="waldo" id="waldo-img" src={img1} alt=""></img>
                 <div id="hitbox">X</div>
             </div>
-            {<DropDownMenu x={coords.x} y={coords.y} hide={hide} hideCallback={hideCallback} />}
-            {JSON.stringify(mousePos)}
+            {hide ? <DropDownMenu chooseCharacterCallback={chooseCharacterCallback} /> : ""}
+
 
         </div>
     )
