@@ -8,6 +8,7 @@ import img1 from '../../assets/wheres-waldo.jpeg'
 // import useMousePosition from "../hooks/useMousePosition";
 import DropDownMenu from "../dopDownMenu/DropDownMenu";
 import { getFirestore, doc, getDoc, collection, setDoc } from 'firebase/firestore'
+import Timer from "../Timer/Timer";
 
 
 export default function Main(props) {
@@ -19,12 +20,12 @@ export default function Main(props) {
     const [selection, setSelection] = useState("");
     const [hide, setHide] = useState(false);
     const [lastRegionSelected, setlastRegionSelected] = useState();
+    const [startGame, setStartGame] = useState(false)
 
 
 
 
-
-    async function validateSelection(){
+    async function validateSelection(charId){
 
         try {
 
@@ -34,10 +35,12 @@ export default function Main(props) {
             const charSnap = await getDoc(charRef)
             let data = charSnap.data()
             console.log(data)
-            if (lastRegionSelected === 'hitbox' && selection === data.one){
+            if (lastRegionSelected === 'hitbox' && charId === data.one){
                 alert('correct')
+                setHide(false)
             } else {
                 alert('incorrect')
+                setHide(false)
             }       
         } catch(error){
             console.log(error)
@@ -50,8 +53,6 @@ export default function Main(props) {
 
 
 
-    
-    
 
     useEffect(() => {
         let authToken = sessionStorage.getItem('Auth Token')
@@ -70,21 +71,8 @@ export default function Main(props) {
    
 
 
-    useEffect(() => {
-        if (lastRegionSelected){
-            validateSelection();
-
-        }
-    }, [selection])
-
     
-    async function chooseCharacterCallback(selection){
-        // recieves id from clicking on a name and sets selection var to that id.
-        setSelection(selection)
 
-        
-        console.log('sel', selection)
-    }
 
     function showMenu(e){
         console.log(e.target.id)
@@ -101,19 +89,27 @@ export default function Main(props) {
 
     }
 
-
+    function startGameFn(e){
+        e.preventDefault();
+        setStartGame(true)
+    }
 
     return (
         <div className="main" id="main" onClick={showMenu} >
             <Nav signOut={props.signOut} name={props.name} />
-            <h1 className="title">Wheres Waldo</h1>
-            <div className="waldo-container" id="waldo-container">
-                <img className="waldo" id="waldo-img" src={img1} alt=""></img>
-                <div id="hitbox">X</div>
-            </div>
-            {hide ? <DropDownMenu chooseCharacterCallback={chooseCharacterCallback} /> : ""}
-
-
+            
+            {startGame ? 
+                         <div className="main"> 
+                            <h1 className="title">Wheres Waldo</h1>
+                            {<Timer />}
+                            <div className="waldo-container" id="waldo-container">
+                                <img className="waldo" id="waldo-img" src={img1} alt=""></img>
+                                <div id="hitbox">X</div>
+                            </div>
+                            {hide ? <DropDownMenu  validate={validateSelection} /> : ""}
+                         </div> 
+                         : 
+                         <button className="start-btn" onClick={startGameFn}>Start Game</button>}
         </div>
     )
 }

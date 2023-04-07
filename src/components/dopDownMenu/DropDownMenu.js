@@ -24,16 +24,13 @@ export default function DropDownMenu(props){
     }, []);
 
 
-    function chooseCharacter(e){
-        console.log(e)
-        props.chooseCharacterCallback(e.target.id);
-    }
+
 
     return (
         <div className="drop-down-menu" style={{'position': 'absolute', 'top': mousePosition.y, 'left': mousePosition.x, }}>
-            <p id="michael" onClick={chooseCharacter}>michael</p>
-            <p id="waldo" onClick={chooseCharacter}>waldo</p>
-            <p id="james" onClick={chooseCharacter}>james</p>
+            <p id="michael" onClick={(e) => {props.validate(e.target.id)}}>michael</p>
+            <p id="waldo" onClick={(e) => {props.validate(e.target.id)}}>waldo</p>
+            <p id="james" onClick={(e) => {props.validate(e.target.id)}}>james</p>
         </div>
     )
 }
