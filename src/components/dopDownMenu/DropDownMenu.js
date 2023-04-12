@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import './DropDownMenu.css'
 export default function DropDownMenu(props){
 
     const [mousePosition, setMousePosition] = useState({x: null, y: null})
@@ -7,7 +7,7 @@ export default function DropDownMenu(props){
 
     useEffect(() => {
         const handleMouseClick = (event) => {
-            if (event.target.id === 'waldo-img'){
+            if (event.target.id === 'waldo-container'){
                 setMousePosition({x: event.clientX, y: event.clientY})
             }
 
@@ -28,9 +28,9 @@ export default function DropDownMenu(props){
 
     return (
         <div className="drop-down-menu" style={{'position': 'absolute', 'top': mousePosition.y, 'left': mousePosition.x, }}>
-            <p id="michael" onClick={(e) => {props.validate(e.target.id)}}>michael</p>
-            <p id="waldo" onClick={(e) => {props.validate(e.target.id)}}>waldo</p>
-            <p id="james" onClick={(e) => {props.validate(e.target.id)}}>james</p>
+            <p className="names" id="michael" onClick={(e) => {props.validate(e.target.id)}}>michael</p>
+            <p className="names" id="waldo" onClick={(e) => {props.validate(e.target.id)}}>waldo</p>
+            <p className="names" id="james" onClick={(e) => {props.validate(e.target.id)}}>james</p>
         </div>
     )
 }

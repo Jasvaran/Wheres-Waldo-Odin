@@ -1,3 +1,18 @@
 .drop-down-menu{
+    box-sizing: border-box;
     position: absolute;
+    background-color: rgba(70, 70, 224, 0.7);
+
+
+    
 }
+
+.names {
+    margin: 0;
+    height: 50px;
+    cursor: pointer;
+    color: orange;
+    border: 1px solid black;
+    font-size: 30px;
+}
+

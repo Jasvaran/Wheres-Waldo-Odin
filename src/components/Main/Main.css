@@ -1,14 +1,19 @@
 .main {
-    height: 100%;
+    height: 100vh;
     width: 100%;
-    background-color: #86A3B8;
+    background-image: url('../../assets/25101.jpg');
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .waldo-container{
+    position: relative;
+    background-image: url('../../assets/wheres-waldo.jpeg');
+    background-size: 700px 700px;
+    background-repeat: no-repeat;
     height: 700px;
     width: 700px;
+    bottom: 3em;
 }
 .waldo {
     height: 600px;
@@ -17,14 +22,22 @@
 }
 
 #hitbox {
+    height: 76px;
+    width: 24px;
     cursor: default;
-    font-size: 27px;
-    position: absolute;
+    position: relative;
     border: 1px solid black;
-    left: 1003px;
-    top: 650px;
+    float: right;
+    right: 75px;
+    top: 34.2em;
     margin-bottom:0px;
     opacity: 0;
-    /* color: green;
-    background-color: black; */
+    color: green;
+    /* background-color: black; */
 }
+
+.start-btn {
+    position: relative;
+    top: 20em;
+}
+

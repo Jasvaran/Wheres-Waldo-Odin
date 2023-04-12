@@ -100,7 +100,7 @@ function App() {
           <Route path='register' element={<Register registerCallback={handleRegister} />} />
           <Route path='/home' element={<Main signOut={handleSignOut} name={userEmail} />} />
         </Routes>
-        <Footer />
+      <Footer />
       </div>
 
 

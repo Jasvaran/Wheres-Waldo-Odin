@@ -1,0 +1,8 @@
+.timer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    justify-content: space-between;
+    text-align: center;
+}
