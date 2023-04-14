@@ -1,4 +1,5 @@
 .main {
+    overflow: hidden;
     height: 100vh;
     width: 100%;
     background-image: url('../../assets/25101.jpg');
@@ -13,7 +14,7 @@
     background-repeat: no-repeat;
     height: 700px;
     width: 700px;
-    bottom: 3em;
+    bottom: 5em;
 }
 .waldo {
     height: 600px;
