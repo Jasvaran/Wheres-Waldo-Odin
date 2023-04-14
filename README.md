@@ -6,7 +6,7 @@ Project Tasks :
 
 1) Set up a GitHub Repo for this project. Follow the instructions atop the Recipes project if you need help.
 
-2)Think about what you’ll need to do to get this all working together. This is where it’s really helpful to think it completely through on paper or whiteboard ahead of time! A few minutes of thought can save you from wasting an hour of coding.
+2) Think about what you’ll need to do to get this all working together. This is where it’s really helpful to think it completely through on paper or whiteboard ahead of time! A few minutes of thought can save you from wasting an hour of coding.
 
 3) If you’re using Rails as your backend: create a new Rails application with just the bare bones required to load your HTML page for now. If you’ll be using Firebase, this is a good time to create a new Firebase project for this app, and link to the necessary scripts at the bottom of your HTML page.
 
