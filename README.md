@@ -2,6 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Project Part of Full Stack JavaScript Curriculum from The Odin Project
 Project Tasks : 
 
 1) Set up a GitHub Repo for this project. Follow the instructions atop the Recipes project if you need help.
